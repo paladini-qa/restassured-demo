@@ -1,9 +1,11 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
+package com.vitor.restapi.utils;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class JsonUtils {
-    public static <T> T lerJsonComoObjeto(String caminho, Class<T> tipo) throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File("src/test/resources/" + caminho), tipo);
+    public static String lerJsonComoString(String nomeArquivo) throws IOException {
+        return new String(Files.readAllBytes(Paths.get("src/test/resources/" + nomeArquivo)));
     }
 }

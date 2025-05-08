@@ -3,13 +3,19 @@ package com.vitor.restapi;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.Test;
+import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class ApiTest {
+public class APITest {
 
     private static final String BASE_URI = "https://jsonplaceholder.typicode.com";
     private static final String POSTS_ENDPOINT = "/posts";
+
+    @Before
+    public void setUp() {
+        RestAssured.baseURI = BASE_URI;
+    }
 
     @Test
     public void getPosts() {
